@@ -10,15 +10,19 @@ import java.util.List;
 @Entity
 public class Doctor {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "name",nullable = false)
     private String name;
+    @Column(name = "specialization",nullable = false)
     private String specialization;
+    @Column(name = "phone",nullable = false)
     private String phone;
-    @Email
+    @Column(name = "email",nullable = false)
     private String email;
+    @Column(name = "officeAddress",nullable = false)
     private String officeAddress;
-    @OneToMany(mappedBy = "doctor" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     private List<Appointment> appointments;
 
     public Doctor(Long id, String name, String specialization, String phone, String email, String officeAddress, List<Appointment> appointments) {

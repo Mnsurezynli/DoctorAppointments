@@ -7,32 +7,33 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 public class DoctorDto {
+
     private Long id;
     private String name;
     private String specialization;
     private String phone;
     private String email;
     private String officeAddress;
-    private List<Appointment> appointments;
+   // private List<Appointment> appointments;
 
     public DoctorDto() {
     }
 
     public DoctorDto(Long id, String name, String specialization, String phone, String email, String officeAddress, List<Appointment> appointments) {
-        this.id = id;
+      this.id = id;
         this.name = name;
         this.specialization = specialization;
         this.phone = phone;
         this.email = email;
         this.officeAddress = officeAddress;
-        this.appointments = appointments;
+        //this.appointments = appointments;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+   public void setId(Long id) {
         this.id = id;
     }
 
@@ -76,11 +77,11 @@ public class DoctorDto {
         this.officeAddress = officeAddress;
     }
 
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
-
-    public void setAppointments(List<Appointment> appointments) {
-        this.appointments = appointments;
-    }
+//    public List<Appointment> getAppointments() {
+//        return appointments;
+//    }
+//
+//    public void setAppointments(List<Appointment> appointments) {
+//        this.appointments = appointments;
+//    }
 }

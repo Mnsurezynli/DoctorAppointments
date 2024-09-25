@@ -10,12 +10,15 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "phoneNumber")
     private String phoneNumber;
     @Email
+    @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "patient" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Appointment> appointments;
 
     public Patient(Long id, String name, String phoneNumber, String email, List<Appointment> appointments) {

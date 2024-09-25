@@ -7,4 +7,6 @@ import java.util.List;
 public interface IAppointmentService {
 
     List<AppointmentDto> viewAppointmentsByDoctor(Long doctorId);
+
+    void deleteAppointment(Long appointmentId, Long doctorId);
 }
