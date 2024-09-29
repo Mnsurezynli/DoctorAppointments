@@ -60,7 +60,7 @@ public class DoctorServiceImpl implements IDoctorService {
         }
 
         if (endTime.minusMinutes(30).isBefore(startTime)) {
-            throw new IllegalArgumentException("مدت زمان باید حداقل 30 دقیقه باشد.");
+            throw new IllegalArgumentException("مدت زمان باید  30 دقیقه باشد.");
         }
 
         List<LocalDateTime> slots = new ArrayList<>();

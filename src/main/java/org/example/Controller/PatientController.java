@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/Patient")
+@RequestMapping("/api/patient")
 public class PatientController {
 
     private IPatientService iPatientService;
@@ -24,7 +24,7 @@ public class PatientController {
 
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<PatientDto> addPatient(@RequestBody PatientDto patientDto) {
         PatientDto savedPatient = iPatientService.savePatient(patientDto);
         return new ResponseEntity<>(savedPatient, HttpStatus.CREATED);

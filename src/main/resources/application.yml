@@ -20,10 +20,10 @@
 #      show-sql: true
 spring:
   datasource:
-    url: jdbc:h2:file:./data/testdb;AUTO_SERVER=TRUE
+    url: jdbc:h2:file:/home/farazware/test
     driver-class-name: org.h2.Driver
     username: sa
-    password: ''
+    password: 'zeynali2001'
   h2:
     console:
       enabled: true

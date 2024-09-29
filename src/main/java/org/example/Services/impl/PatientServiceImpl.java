@@ -39,8 +39,9 @@ public class PatientServiceImpl implements IPatientService {
     public PatientDto savePatient(PatientDto patientDto) {
         Patient patient = convertToEntity(patientDto);
         Patient savedPatient = patientRepository.save(patient);
-        return convertToDto(patient);
+        return convertToDto(savedPatient);
     }
+
 
     public List<AppointmentDto> getOpenAppointments() {
         List<Appointment> appointments = appointmentRepository.findOpenAppointmentsByStatus("OPEN");
@@ -67,9 +68,6 @@ public class PatientServiceImpl implements IPatientService {
 
 
     public List<AppointmentDto> getAllAppointments(String patientPhone) {
-        if (patientPhone == null || patientPhone.isEmpty()) {
-            throw new IllegalArgumentException("شماره تلفن باید ارائه شود.");
-        }
         List<Appointment> appointments = appointmentRepository.findByPatientPhone(patientPhone);
         return appointments.stream()
                 .map(appointmentService::convertToDto)
@@ -79,7 +77,6 @@ public class PatientServiceImpl implements IPatientService {
 
     public PatientDto convertToDto(Patient patient) {
         PatientDto patientDto = new PatientDto();
-        patientDto.setId(patient.getId());
         patientDto.setName(patient.getName());
         patientDto.setPhoneNumber(patient.getPhoneNumber());
         patientDto.setEmail(patient.getEmail());
@@ -89,7 +86,6 @@ public class PatientServiceImpl implements IPatientService {
 
     private Patient convertToEntity(PatientDto patientDto) {
         Patient patient = new Patient();
-        patient.setId(patientDto.getId());
         patient.setName(patientDto.getName());
         patient.setEmail(patientDto.getEmail());
         patient.setPhoneNumber(patientDto.getPhoneNumber());
