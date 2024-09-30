@@ -1,26 +1,7 @@
-#server:
-#  port: 8090
-#  servlet:
-#    context-path: /api
-#
-#spring:
-#  datasource:
-#    url: jdbc:mysql://127.0.0.1:3306/onlineShop
-#    username: mnsure
-#    password: Mytestp@ssword12
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#
-#  jpa:
-#    database-platform: org.hibernate.dialect.MySQL5Dialect
-#    hibernate:
-#      cache:
-#        use_second_level_cache: false
-#        use_query_cache: false
-#      ddl-auto: create
-#      show-sql: true
+
 spring:
   datasource:
-    url: jdbc:h2:file:/home/farazware/test
+    url: jdbc:h2:file:./data/testdb;DB_CLOSE_ON_EXIT=FAlSE
     driver-class-name: org.h2.Driver
     username: sa
     password: 'zeynali2001'
@@ -29,5 +10,5 @@ spring:
       enabled: true
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true

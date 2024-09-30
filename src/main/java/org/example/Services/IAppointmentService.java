@@ -1,12 +1,21 @@
 package org.example.Services;
 
-import org.example.Dto.AppointmentDto;
+import org.example.Model.Appointment;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IAppointmentService {
 
-    List<AppointmentDto> viewAppointmentsByDoctor(Long doctorId);
+     List<Appointment> viewOpenAppointmentsByDoctor();
 
-    void deleteAppointment(Long appointmentId, Long doctorId);
+    void deleteOpenAppointment(Long appointmentId);
+
+     void addFreeTimeSlot(LocalDateTime startTime, LocalDateTime endTime);
+
+    List<Appointment> viewAppointmentsByPatientPhone(String patientPhone);
+
+    void selectAppointment(Long appointmentId, String patientName, String patientPhone);
+
+    List<Appointment> getAllAppointments();
 }
