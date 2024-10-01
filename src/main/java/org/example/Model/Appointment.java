@@ -1,7 +1,9 @@
 package org.example.Model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Table(name = "appointment")
 @Entity
@@ -13,21 +15,13 @@ public class Appointment {
     private LocalDateTime startTime;
     @Column(name = "endTime")
     private LocalDateTime endTime;
-    @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
     @Column(name = "patientName")
     private String patientName;
     @Column(name = "patientPhone")
     private String patientPhone;
 
-    public Appointment(Long id, LocalDateTime startTime, LocalDateTime endTime, String status, String patientName, String patientPhone) {
-        this.id = id;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.status = status;
-        this.patientName = patientName;
-        this.patientPhone = patientPhone;
-    }
     public Appointment() {
     }
 
@@ -56,14 +50,13 @@ public class Appointment {
         this.endTime = endTime;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
-
 
     public void setPatientName(String patientName) {
         this.patientName = patientName;

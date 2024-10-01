@@ -3,10 +3,12 @@ package org.example.Controller;
 import org.example.Model.Appointment;
 import org.example.Services.IAppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -21,14 +23,15 @@ public class AppointmentController {
     }
 
     @PostMapping("/freeTime")
-    public void addFreeTimeSlot(@RequestParam LocalDateTime startTime, @RequestParam LocalDateTime endTime) {
+    public void addFreeTimeSlot(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startTime,
+                                @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endTime){
         iAppointmentService.addFreeTimeSlot(startTime, endTime);
     }
 
 
     @GetMapping("/viewByDoctor")
     public List<Appointment> viewOpenAppointmentsByDoctor() {
-        return iAppointmentService.getAllAppointments();
+        return iAppointmentService.viewOpenAppointmentsByDoctor();
     }
 
     @GetMapping("/viewAppointment")
@@ -47,10 +50,8 @@ public class AppointmentController {
     }
 
     @GetMapping("/all")
-    public List<Appointment> getAllAppointments() {
-        return iAppointmentService.getAllAppointments();
+    public List<Appointment> patientViewOpenAppointment() {
+        return iAppointmentService.patientViewOpenAppointment();
     }
 
 }
-
-
