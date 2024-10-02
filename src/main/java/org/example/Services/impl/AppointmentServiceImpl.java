@@ -50,20 +50,15 @@ public class AppointmentServiceImpl implements IAppointmentService {
     }
 
     public List<Appointment> viewOpenAppointmentsByDoctor() {
-        return appointmentRepository.findAll().stream()
-                .filter(appointment -> appointment.getStatus().equals(Status.open) || appointment.getStatus().equals(Status.taken))
-                .map(appointment -> {
-                    Appointment appointment1 = new Appointment();
-                    appointment1.setStatus(appointment.getStatus());
-                    if (appointment.getStatus().equals(Status.taken)) {
-                        appointment1.setPatientName(appointment.getPatientName());
-                        appointment1.setPatientPhone(appointment.getPatientPhone());
-                    }
-                    return appointment1;
-                })
-                .collect(Collectors.toList());
-    }
+        List<Appointment> allAppointments = appointmentRepository.findAll();
+        System.out.println("Total Appointments: " + allAppointments.size());
+        allAppointments.forEach(a -> System.out.println("ID: " + a.getId() + ", Status: " + a.getStatus()));
 
+        List<Appointment> openAppointments = allAppointments.stream()
+                .filter(appointment -> appointment.getStatus().equals(Status.open))
+                .collect(Collectors.toList());
+        return openAppointments;
+    }
     @Transactional
     public void deleteOpenAppointment(Long appointmentId) {
         Optional<Appointment> optionalAppointment = appointmentRepository.findById(appointmentId);
