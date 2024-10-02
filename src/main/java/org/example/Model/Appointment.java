@@ -9,17 +9,17 @@ import java.util.Date;
 @Entity
 public class Appointment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id ;
     @Column(name = "startTime")
     private LocalDateTime startTime;
     @Column(name = "endTime")
     private LocalDateTime endTime;
     @Enumerated(EnumType.STRING)
     private Status status;
-    @Column(name = "patientName")
+    @Column(name = "patientName",nullable = true)
     private String patientName;
-    @Column(name = "patientPhone")
+    @Column(name = "patientPhone", nullable = true)
     private String patientPhone;
 
     public Appointment() {

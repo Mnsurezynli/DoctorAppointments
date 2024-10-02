@@ -1,5 +1,6 @@
 package org.example.Services;
 
+import org.example.Dto.FreeTimeSlotDto;
 import org.example.Model.Appointment;
 
 import java.time.LocalDateTime;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public interface IAppointmentService {
 
-    void addFreeTimeSlot(LocalDateTime startTime, LocalDateTime endTime);
+    void addFreeTimeSlot(FreeTimeSlotDto freeTimeSlotDto);
 
     List<Appointment> viewOpenAppointmentsByDoctor();
 
@@ -19,5 +20,6 @@ public interface IAppointmentService {
     void selectAppointment(Long appointmentId, String patientName, String patientPhone);
 
     List<Appointment> viewAppointmentsByPatientPhone(String patientPhone);
+
 
 }

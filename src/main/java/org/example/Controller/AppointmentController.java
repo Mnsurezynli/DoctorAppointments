@@ -1,5 +1,6 @@
 package org.example.Controller;
 
+import org.example.Dto.FreeTimeSlotDto;
 import org.example.Model.Appointment;
 import org.example.Services.IAppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,8 @@ public class AppointmentController {
     }
 
     @PostMapping("/freeTime")
-    public void addFreeTimeSlot(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startTime,
-                                @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endTime){
-        iAppointmentService.addFreeTimeSlot(startTime, endTime);
+    public void addFreeTimeSlot(@RequestBody FreeTimeSlotDto freeTimeSlotDto) {
+        iAppointmentService.addFreeTimeSlot(freeTimeSlotDto);
     }
 
 
